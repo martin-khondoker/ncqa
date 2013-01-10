@@ -1,0 +1,23 @@
+<table width=100% cellpadding=2>
+{% for team_bugs in teams_bugs %}
+	<tr class='header'>
+		<th> Team Name: {{ team_bugs.name|upper }} </th>
+		<th>Total Jobs: {{ team_bugs.sprintjobs|length }} </th>
+		<th>Total Bugs: {{ team_bugs.bugs|length }} </th>
+		<th>Total Repeated bugs:</th>
+	</tr>
+
+	<tr class='title'><td> Bug Title </td><td>Job Title </td><td>The Bugyman </td><td>Screenshot </td></tr>
+	{% for team_bug in team_bugs.bugs %}
+		<tr class='content'>
+			<td> <a href="/issuedetails/{{ team_bug.id }}/">{{ team_bug.bug }}</a></td>
+			<td> {{ team_bug.sprintjob }}</td>
+			<td>{{ team_bug.bugyman }}</td>
+			<td><img src="{{ team_bug.screeshot }}" width=50 height=40></td>
+			
+		</tr>
+	{% endfor %}	
+
+{% endfor %}
+
+</table>

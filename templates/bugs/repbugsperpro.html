@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+
+{% block leftmenu %}
+	<ul class="leftmenu">  
+		
+		<li><a href="/teamsbug/"><img src='/static/images/bug_icon.png'>Team Bugs</a></li> 
+		<li><a href="/individualbugs/"><img src='/static/images/butterfly.png'>Individual Bugs</a></li>
+		<li ><a href="/repbugsperteam/"><img src='/static/images/frog.png'>Repeated Bugs / Team</a></li> 	
+		<li><a href="/repbugsperpro/"><img src='/static/images/panda.png'>Repeated Bugs / Project</a></li>
+		<li ><a href="/clientbugs/"><img src='/static/images/mantis.png'>Client Bugs</a></li>	
+		
+	</ul>
+	
+	
+{% endblock leftmenu %}
+
+{% block threeBox %}
+
+{% endblock threeBox %}
+
+{% block content %}
+<h1> {{ msg }}</h1>
+{% endblock content %}

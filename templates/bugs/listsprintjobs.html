@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block threeBox %}
+
+{% endblock threeBox %}
+
+{% block content %}
+<table border=0 width=100% cellpadding=2>
+<tr class='title'><td> Title </td><td>JOB Title </td><td>Project Type</td><td>Project Title </td>
+<td>Developers </td><td>Sprint ID </td></tr>
+{% for sprintjob in sprintjobs %}
+	<tr class='content'>
+	<td> {{ sprintjob.title }}</td><td> {{ sprintjob.job_type }}</td><td>{{ sprintjob.project_type }}</td><td> {{ sprintjob.project_title }}</td>
+	<td> {% for dev in sprintjob.developers.all %} {{ dev.name }}, {% endfor %}</td>
+	<td> {{ sprintjob.sprint.id }}</td>
+	</tr>
+{% endfor %}
+</table>
+{% endblock content %}

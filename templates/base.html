@@ -1,0 +1,168 @@
+<html>
+<head>
+	<title>This is my learning page</title>	
+	<link rel="stylesheet" type="text/css" href="/static/css/960.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/style.css">
+	<script type="text/javascript" src='/static/js/jquery-1.8.2.js' ></script>
+	<script type="text/javascript" src='/static/js/jquery.cycle.all.js' ></script>
+	<script type="text/javascript" src='/static/js/highcharts.js'></script>
+	
+	
+</head>
+<body>	
+{% block header %}
+<header>
+	<div class="container_12">
+		<div class="grid_4">
+		  	<div id='logo'>
+		  		{% block logo %}
+
+		  		{% endblock logo %}
+		  	</div>
+	  	</div>
+	  	<div class="grid_5">
+	  		{% block headerMenu %}
+		  	
+		  	{% endblock headerMenu %}
+	  	</div>
+	  	<div class="grid_3 prefix_9">
+		  	<div id='header_left'>
+		  		{% block header_left %}
+			  		{% if not user.is_authenticated %}
+				  		<ul>
+				  			<li><a href="/login/">Login</a></li>
+				  			<li><a href="/signup/">Sing Up</a></li>	  			
+			  			</ul>
+			  		{% else %}
+			  		<div id='userprofile'>
+			  			<p>
+			  				{{ user.first_name }} {{ user.last_name }}</br>
+			  				{{ user.email }}
+			  			</p>
+			  			<a href="/logout/">logout</a>
+			  		</div>
+			  		{% endif %}
+		  		{% endblock header_left %}
+		  	</div>
+	  	</div>
+	  <div class="clear"></div>
+	</div>
+	
+</header>
+{% endblock header %}
+
+<div id='container'>
+	
+	<div class="container_12">
+	{% block topmenu %}
+	  	<div class="grid_12">	  	
+		    <div class='topmenu'>		
+						
+				<ul class="menu" rel="sam1">  
+					<li><a href="/">Home</a></li>  
+					<li><a href="/bugs/">Bugs</a></li>					
+				</ul>						
+		    </div>		    	    
+	  	</div>
+	  	<!-- end .grid_11 -->
+	  	<div class="clear"></div>
+  	{% endblock %}
+
+		{% block threeBox %}
+		{% block sprintselector %}
+		<div id='sprint_selector'>
+			<ul class='home'>
+	    		<li>
+					<select name='sprint'>
+						{% for sprint in sprints %}
+							<option value={{ sprint.id }}> {{ sprint.release_date }}</option>
+						{% endfor %}
+					</select>
+				</li>
+	    	</ul>
+    	</div>
+    	{% endblock %}
+		<div class="grid_6">
+		  	<div class='leftBox'>
+		  		{% block leftbox %}
+		  		<div id='mychart'>
+		  		</div>		  				  		
+				{% endblock %}
+		  	</div>    
+		</div>	  	
+
+	  	<div class="grid_6">
+
+		    <div class='rightBox'>
+		    	{% block rightbox %}
+	  			<div id='mychart2'>
+		  		</div>
+				{% endblock %}
+		    </div>
+	  	</div>	  
+	  	<div class="clear"></div>
+	  {% endblock threeBox %}
+
+
+	  {% block contentfull %}
+		<div class="grid_3">
+			<div class='leftmenu'>
+				{% block leftmenu %}
+				<ul class="leftmenu" >						
+					<li ><a href="/tperformance/" ><img src='/static/images/butterfly.png'>Team Performance </a></li>
+					<li ><a href="/iperformance/" ><img src='/static/images/frog.png'>Individual Performance </a></li>
+				</ul>	
+				{% endblock leftmenu %}
+				{% if user.is_authenticated %}
+					<ul class="leftmenu">  
+						<li><a href="/addbug/"><img src='/static/images/bug_icon.png'>Add Bug</a></li>
+						<li><a href="/listbugs/"><img src='/static/images/bug_icon.png'>List Bugs</a></li> 
+						<li><a href="/addissue/"><img src='/static/images/butterfly.png'>Add Issue</a></li>
+						<li><a href="/listissues/"><img src='/static/images/bug_icon.png'>List Issues</a></li>
+						<li ><a href="/addsprint/"><img src='/static/images/frog.png'>Add Sprint</a></li> 
+						<li><a href="/listsprints/"><img src='/static/images/bug_icon.png'>List Sprints</a></li>
+						<li ><a href="/addsprintjob/"><img src='/static/images/mantis.png'>Add Sprint Job</a></li>
+						<li><a href="/listsprintjobs/"><img src='/static/images/bug_icon.png'>List Sprint Jobs</a></li> 
+						<li><a href="/addteam/"><img src='/static/images/panda.png'>Add Team</a></li>
+						<li><a href="/listteams/"><img src='/static/images/bug_icon.png'>List Teams</a></li>					  
+						<li><a href="/addmember/"><img src='/static/images/bug_icon.png'>Add Member</a></li>
+						<li><a href="/listmembers/"><img src='/static/images/bug_icon.png'>List Members</a></li>
+					</ul>
+				{% endif %}
+			</div>
+		</div>
+
+		<div class="grid_9">
+			<div class='content'>
+				{% block content %}
+					
+					<div id='mychart3'>
+		  			</div>
+				{% endblock content %}
+			</div>
+		</div>
+
+		<div class="clear"></div>
+	  {% endblock contentfull %}
+
+	  
+
+	</div>
+</div>
+
+<footer>
+	{% block footer %}
+	{% endblock footer %}
+</footer>
+
+
+{% block myjs %}
+	<script type="text/javascript" src='/static/js/home.js'></script>
+{% endblock myjs %}
+{% block pagejs %}
+<script type="text/javascript">
+	app.init();
+</script>
+{% endblock %}
+</body>
+</html>

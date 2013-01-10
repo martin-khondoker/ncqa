@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block threeBox %}
+
+{% endblock threeBox %}
+
+{% block content %}
+<table width=85% cellpadding=5>
+<tr class='title'><td> Name</td><td>Code Name</td><td>Team Name</td><td>Avatar</td></tr>
+{% for member in members %}
+<tr class='content'>
+<td> {{ member.name }}</td><td> {{ member.codename }}</td><td>{{ member.team }}</td>
+<td><a href="/media/{{ member.avatar }}" target="_blank">
+	<img src="/media/{{ member.avatar }}" width=60 height=50></a></td>
+</tr>
+
+{% endfor %}
+</table>
+{% endblock content %}

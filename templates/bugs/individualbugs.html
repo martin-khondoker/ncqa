@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+
+{% block leftmenu %}
+	<ul class="leftmenu">  
+		
+		<li><a href="/teamsbug/"><img src='/static/images/bug_icon.png'>Team Bugs</a></li> 
+		<li><a href="/individualbugs/"><img src='/static/images/butterfly.png'>Individual Bugs</a></li>
+		<li ><a href="/repbugsperteam/"><img src='/static/images/frog.png'>Repeated Bugs / Team</a></li> 	
+		<li><a href="/repbugsperpro/"><img src='/static/images/panda.png'>Repeated Bugs / Project</a></li>
+		<li ><a href="/clientbugs/"><img src='/static/images/mantis.png'>Client Bugs</a></li>	
+		
+	</ul>
+	
+	
+{% endblock leftmenu %}
+
+{% block threeBox %}
+
+		<ul class='individualbugpage'>
+    		<li>
+				<select name='sprint'>
+					<option value=0> All release </option>
+					{% for sprint in sprints %}
+						<option value={{ sprint.id }}> {{ sprint.release_date }}</option>
+					{% endfor %}
+				</select>
+			</li>
+    	</ul>
+{% endblock threeBox %}
+
+{% block content %}
+
+
+<div id='individualbugs'>
+	<table width=100% cellpadding=2>
+	{% for member_bugs in members_bugs %}
+		<tr class='header'>
+			<th>Name: {{ member_bugs.name.name|upper }} </th>
+			<th>Team Name: {{ member_bugs.name.team.team_name|upper }} </th>
+			<th>Total Jobs: {{ member_bugs.sprintjobs|length }} </th>
+			<th>Total Bugs: {{ member_bugs.bugs|length }} </th>
+			<th><img src="/media/{{ member_bugs.name.avatar }}" width=30 height=30></th>
+		</tr>
+
+		<tr class='title'><td> Bug Title </td><td>Job Title </td><td>Frequency</td><td>Jira Ticket</td><td>Screenshot </td></tr>
+		{% for member_bug in member_bugs.bugs %}
+			<tr class='content'>
+				<td> <a href="/issuedetails/{{ member_bug.id }}/">{{ member_bug.bug }}</a></td>
+				<td> {{ member_bug.sprintjob }}</td>
+				<td></td>
+				<td>{{ member_bug.sprintjob.jira_ticket }}</td>
+				<td><img src="{{ member_bug.screeshot }}" width=50 height=40></td>
+				
+			</tr>
+		{% endfor %}	
+
+	{% endfor %}
+
+	</table>
+</div>
+
+{% endblock content %}

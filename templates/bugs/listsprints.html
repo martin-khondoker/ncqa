@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+
+{% block threeBox %}
+
+{% endblock threeBox %}
+
+{% block content %}
+<table width=85% cellpadding=5>
+<tr class='title'><td>Sprint Start Date</td><td>Sprint Release Date</td><td>Description</td>
+{% for sprint in sprints %}
+<tr class='content'>
+<td> {{ sprint.start_date }}</td><td> {{ sprint.release_date }}</td><td>{{ sprint.description }}</td>
+</tr>
+
+{% endfor %}
+</table>
+{% endblock content %}

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+
+{% block leftmenu %}
+	<ul class="leftmenu">  
+		
+		<li><a href="/teamsbug/"><img src='/static/images/bug_icon.png'>Team Bugs</a></li> 
+		<li><a href="/individualbugs/"><img src='/static/images/butterfly.png'>Individual Bugs</a></li>
+		<li ><a href="/repbugsperteam/"><img src='/static/images/frog.png'>Repeated Bugs / Team</a></li> 	
+		<li><a href="/repbugsperpro/"><img src='/static/images/panda.png'>Repeated Bugs / Project</a></li>
+		<li ><a href="/clientbugs/"><img src='/static/images/mantis.png'>Client Bugs</a></li>	
+		
+	</ul>
+	
+	
+{% endblock leftmenu %}
+
+{% block threeBox %}
+
+{% endblock threeBox %}
+
+{% block content %}
+<div id='teamsbug'>
+	<table width=100% cellpadding=2>
+	<tr class='title'><td> Sprint </td><td>Total Bugs </td><td>Client Issues</td><td>Repeated Bugs</td><td>The Bugyman </td></tr>
+	{% for bug in bugs %}
+	<tr class='content'>
+		<td> {{ bug.title }}</td><td> {{ bug.totalbugs }}</td>
+		<td>{% if bug.clientbugs %}{{ bug.clientbugs }}{% else %}0{% endif %}</td>
+		<td>{{ bug.repeatedbugs }}</td>
+		<td>		
+			<img src="" width=60 height=50></a>
+		</td>
+	</tr>
+
+	{% endfor %}
+	</table>
+</div>
+{% endblock content %}

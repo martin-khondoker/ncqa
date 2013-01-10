@@ -1,0 +1,25 @@
+<table width=100% cellpadding=2>
+	{% for member_bugs in members_bugs %}
+		<tr class='header'>
+			<th>Name: {{ member_bugs.name.name|upper }} </th>
+			<th>Team Name: {{ member_bugs.name.team.team_name|upper }} </th>
+			<th>Total Jobs: {{ member_bugs.sprintjobs|length }} </th>
+			<th>Total Bugs: {{ member_bugs.bugs|length }} </th>
+			<th><img src="/media/{{ member_bugs.name.avatar }}" width=30 height=30></th>
+		</tr>
+
+		<tr class='title'><td> Bug Title </td><td>Job Title </td><td>Frequency</td><td>Jira Ticket</td><td>Screenshot </td></tr>
+		{% for member_bug in member_bugs.bugs %}
+			<tr class='content'>
+				<td> <a href="/issuedetails/{{ member_bug.id }}/">{{ member_bug.bug }}</a></td>
+				<td> {{ member_bug.sprintjob }}</td>
+				<td></td>
+				<td>{{ member_bug.sprintjob.jira_ticket }}</td>
+				<td><img src="{{ member_bug.screeshot }}" width=50 height=40></td>
+				
+			</tr>
+		{% endfor %}	
+
+	{% endfor %}
+
+</table>

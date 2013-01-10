@@ -1,0 +1,121 @@
+<html>
+<head>
+	<title>This is my learning page</title>	
+	<link rel="stylesheet" type="text/css" href="/static/css/960.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/style.css">
+	<script type="text/javascript" src='/static/js/jquery-1.8.2.js' ></script>
+	<script type="text/javascript" src='/static/js/jquery.cycle.all.js' ></script>
+	<script type="text/javascript" src='/static/js/myscript.js'></script>
+</head>
+<body>	
+{% block header %}
+<header>
+	<div class="container_12">
+		<div class="grid_4">
+		  	<div id='logo'>
+		  		{% block logo %}
+
+		  		{% endblock logo %}
+		  	</div>
+	  	</div>
+	  	<div class="grid_5">
+	  		{% block headerMenu %}
+		  	
+		  	{% endblock headerMenu %}
+	  	</div>
+	  	<div class="grid_3 prefix_9">
+		  	<div id='header_left'>
+		  		{% block header_left %}
+			  		<ul>
+			  			<li><a href="/login/">Login</a></li>
+			  			<li><a href="/signup/">Sing Up</a></li>	  			
+		  			</ul>
+		  		{% endblock header_left %}
+		  	</div>
+	  	</div>
+	  <div class="clear"></div>
+	</div>
+	
+</header>
+{% endblock header %}
+
+<div id='container'>
+	
+	<div class="container_12">
+	{% block topmenu %}
+	  	<div class="grid_12">	  	
+		    <div class='topmenu'>		
+						
+				<ul class="menu" rel="sam1">  
+					<li class="active"><a href="#">Home</a></li>  
+					<li><a href="#">Bugs</a></li>  
+					<li ><a href="#">ISSUES</a></li>  
+					<li><a href="#">REPORT</a></li>  
+					  
+					<li><a href="#">Contacts</a></li>  
+					<li><a href="#">Blog</a></li>  
+				</ul>			
+		    </div>	    
+	  	</div>
+	  	<!-- end .grid_11 -->
+	  	<div class="clear"></div>
+  	{% endblock %}
+
+		{% block threeBox %}
+		<div class="grid_4">
+		  	<div class='leftBox'>
+		  		{% block leftbox %}
+		  		
+				{% endblock %}
+		  	</div>    
+		</div>	  	
+
+	  	<div class="grid_4">
+		    <div class='middleBox'>
+		    	{% block middlebox %}
+		  		
+				{% endblock %}
+		    </div>
+	  	</div>
+	  	<div class="grid_4">
+		    <div class='rightBox'>
+		    	{% block rightbox %}
+		  		
+				{% endblock %}
+		    </div>
+	  	</div>	  
+	  	<div class="clear"></div>
+	  {% endblock threeBox %}
+
+
+	  {% block contentfull %}
+		<div class="grid_3">
+			<div class='leftmenu'>
+				{% block leftmenu %}
+					
+				{% endblock leftmenu %}
+			</div>
+		</div>
+
+		<div class="grid_9">
+			<div class='content'>
+				{% block content %}
+					{{ msg }}
+				{% endblock content %}
+			</div>
+		</div>
+
+		<div class="clear"></div>
+	  {% endblock contentfull %}
+
+	  
+
+	</div>
+</div>
+
+<footer>
+	{% block footer %}
+	{% endblock footer %}
+</footer>
+</body>
+</html>

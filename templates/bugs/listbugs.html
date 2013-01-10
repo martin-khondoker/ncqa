@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+
+{% block threeBox %}
+{% endblock threeBox %}
+
+{% block content %}
+<table width=100% cellpadding=2>
+<tr class='title'>
+	<td> Title </td>
+	<td>Bug Type </td>
+	<td>Module Name</td>
+	<td>Feature Name</td>
+	<td>Screenshot </td>
+</tr>
+{% for bug in bugs %}
+<tr class='content'>
+	<td> {{ bug.title }}</td>
+	<td> {{ bug.bug_type }}</td>
+	<td>{{ bug.module }}</td>
+	<td>{{ bug.feature }}</td>
+	<td>
+		<a href="/media/{{ bug.screeshot }}" target="_blank">
+			<img src="/media/{{ bug.screeshot }}" width=60 height=50>
+		</a>
+	</td>
+</tr>
+
+{% endfor %}
+</table>
+{% endblock content %}
